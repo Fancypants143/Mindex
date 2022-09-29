@@ -28,7 +28,26 @@ public class EmployeeController {
         return employeeService.read(id);
     }
 
-    @PutMapping("/employee/{id}")
+    //GET reporting structure
+    @PutMapping("/employee/reporting/")
+    public Employee update(@PathVariable String id, @RequestBody Employee employee) {
+        LOG.debug("Received employee create request for id [{}] and employee [{}]", id, employee);
+
+        employee.setEmployeeId(id);
+        return employeeService.update(employee);
+    }
+
+    //GET compensation
+    @GetMapping("/employee/compensation")
+    public Employee read(@PathVariable String id, @RequestBody Employee employee) {
+        LOG.debug("Received employee create request for id [{}] and employee [{}]", id, employee);
+
+        employee.setEmployeeId(id);
+        return employeeService.update(employee);
+    }
+
+    //PUT compensation
+    @PutMapping("/employee/compensation")
     public Employee update(@PathVariable String id, @RequestBody Employee employee) {
         LOG.debug("Received employee create request for id [{}] and employee [{}]", id, employee);
 
